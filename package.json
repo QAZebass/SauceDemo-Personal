@@ -1,0 +1,23 @@
+{
+  "name": "saucedemopersonal",
+  "version": "1.0.0",
+  "description": "This is a personal repository for learning and practical purposes",
+  "main": "index.js",
+  "scripts": {
+    "test": "cypress open",
+    "file": "cypress run --browser chrome --reporter cypress-multi-reporters --reporter-options configFile=jsconfig.json --record --key 0ac98d56-f8d3-49c8-8229-a37e24242105 --spec cypress/e2e/SD-01-Login.cy.js"
+  },
+  "author": "Sebastian Avila",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^12.17.3",
+    "cypress-mochawesome-reporter": "3.2.3",
+    "cypress-multi-reporters": "^1.6.3",
+    "junit-report-merger": "4.0.0",
+    "mocha": "10.2.0",
+    "mocha-junit-reporter": "2.2.0",
+    "mochawesome": "7.1.3",
+    "mochawesome-merge": "4.2.2",
+    "mochawesome-report-generator": "6.2.0"
+  }
+}
