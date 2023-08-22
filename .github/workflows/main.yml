@@ -24,4 +24,4 @@ jobs:
               with:
                   browser: chrome
                   command: | #EDITAR AQUÍ EL ARCHIVO SUITE A EJECUTAR:
-                      npm file cypress/e2e/SD-01-Login.cy.js
+                      yarn npm file cypress/e2e/SD-01-Login.cy.js
