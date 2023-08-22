@@ -28,7 +28,7 @@ jobs:
                   yarn
 
             - name: 🧪Cypress Run Test Coverage in Chrome
-              uses: cypress-io/github-action@v4
+              uses: cypress-io/github-action@v2.2.7
               with:
                   browser: chrome
                   command: | #EDITAR AQUÍ EL ARCHIVO SUITE A EJECUTAR:
