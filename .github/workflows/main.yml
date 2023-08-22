@@ -1,4 +1,4 @@
-name: CI run (BUILD) Test Suite Execution⚡
+name: 🤖CI run (BUILD) Test Suite Execution⚡
 
 
 on: 
@@ -17,7 +17,7 @@ jobs:
               uses: actions/setup-node@v3
               with:
                   node-version: 16
-            
+
             - name: 💿Yarn Setup
               uses: DerYeger/yarn-setup-action@master
               with:
@@ -27,9 +27,10 @@ jobs:
               run: |
                   yarn
 
+
             - name: 🧪Cypress Run Test Coverage in Chrome
-              uses: cypress-io/github-action@v2.2.7
+              uses: cypress-io/github-action@v4
               with:
                   browser: chrome
                   command: | #EDITAR AQUÍ EL ARCHIVO SUITE A EJECUTAR:
-                      yarn npm file cypress/e2e/SD-01-Login.cy.js
+                      yarn file cypress/e2e/SD-01-Login.cy.js
