@@ -18,6 +18,9 @@ jobs:
               with:
                   node-version: 16
 
+            - name: 🧬Install All Dependencies
+              run: |
+                  yarn
 
             - name: 🧪Cypress Run Test Coverage in Chrome
               uses: cypress-io/github-action@v4
