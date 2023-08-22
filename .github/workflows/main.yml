@@ -1,1 +1,27 @@
+name: CI run (BUILD) Test Suite Execution⚡
 
+
+on: 
+    push:
+        
+
+jobs:
+    Build-Cypress-TestSuite-AfterPush:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: 💻Checkout
+              uses: actions/checkout@v3
+
+            - name: 💿Install Node.js
+              uses: actions/setup-node@v3
+              with:
+                  node-version: 16
+
+
+            - name: 🧪Cypress Run Test Coverage in Chrome
+              uses: cypress-io/github-action@v4
+              with:
+                  browser: chrome
+                  command: | #EDITAR AQUÍ EL ARCHIVO SUITE A EJECUTAR:
+                      npm file cypress/e2e/SD-01-Login.cy.js
