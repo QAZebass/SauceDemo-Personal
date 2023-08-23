@@ -3,7 +3,7 @@ class Login {
         loginContainer:()=> cy.get('[id="login_button_container"]'),
         loginForm:()=> cy.get('[data-test="username"]'),
         passForm:()=> cy.get('[data-test="password"]'),
-        errorMessageContainer:()=> cy.get('[class="error-message-container"]'),
+        errorMessageContainer:()=> cy.get('h3'),
         loginButton:()=> cy.get('[data-test="login-button"]')
     }
 
@@ -21,9 +21,15 @@ class Login {
         
     }
     clickOnLoginButton(){
-        this.get.loginContainer().within(()=>{
+        
+            return this.get.loginContainer().within(()=>{
             this.get.loginButton().should('have.value', 'Login')
             this.get.loginButton().click()
+            this.get.errorMessageContainer().then(message=>{
+                Cypress.env('message', message.text())
+            }).then(()=>{
+                return Cypress.env('message')
+            })
         })
     }
 }

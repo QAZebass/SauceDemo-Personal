@@ -18,4 +18,14 @@ describe('SD-Login Feature',()=>{
         login.writePassword(data.password)
         login.clickOnLoginButton()
     })
+    it.only('SD-02 | Validate the user cant log into the website when invalid credentials are entered',()=>{
+
+        login.writeUserName(data.user2)
+        login.writePassword(data.invalidpass)
+        login.clickOnLoginButton().then(()=>{
+            expect(Cypress.env('message')).equal(data.errorMessage)
+        })
+        
+
+    })
 })
