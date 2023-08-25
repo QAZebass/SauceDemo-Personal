@@ -1,7 +1,6 @@
 import { login } from "../../support/SD-01-Login/SD-01-Login"
-
+let data;
 describe('SD-Login Feature',()=>{
-    let data;
     before('Load data',()=>{
         cy.fixture('SD-01-Login/Login-StaticData').then(fixture=>{
             data= fixture
@@ -18,14 +17,27 @@ describe('SD-Login Feature',()=>{
         login.writePassword(data.password)
         login.clickOnLoginButton()
     })
-    it.only('SD-02 | Validate the user cant log into the website when invalid credentials are entered',()=>{
+    it('SD-02 | Validate the user cant log into the website when invalid credentials are entered',()=>{
 
         login.writeUserName(data.user2)
         login.writePassword(data.invalidpass)
-        login.clickOnLoginButton().then(()=>{
-            expect(Cypress.env('message')).equal(data.errorMessage)
+        login.clickOnLoginButton()
+        login.getErrorMessage().then(()=>{
+            expect(Cypress.env('message')).to.equal(data.errorMessage)
         })
-        
-
     })
+})
+describe.only('SD-Login Feature',()=>{
+    before('Preconditions',()=>{
+        cy.fixture('SD-01-Login/Login-StaticData').then(fixture=>{
+            data= fixture
+        })
+        cy.visit('/')
+        cy.url().should('contain', 'saucedemo')
+    })
+    it('SD-03 | Validate the user can close the error message',()=>{
+        login.loginInvalidData(data.user3, data.invalidpass)
+        login.closeErrorMessage()
+        })
+    
 })

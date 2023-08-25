@@ -2,8 +2,8 @@ const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
 projectId: "4ctxh6",
-viewportWidth: 1920,
-viewportHeight: 1080,
+viewportWidth: 1000,
+viewportHeight: 660,
 watchForFileChanges: false,
 chromeWebSecurity: false,
 	// multi-reporters: one report.xml + mochawesome.json per file.
