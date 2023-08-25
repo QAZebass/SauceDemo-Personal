@@ -26,18 +26,9 @@ describe('SD-Login Feature',()=>{
             expect(Cypress.env('message')).to.equal(data.errorMessage)
         })
     })
-})
-describe.only('SD-Login Feature',()=>{
-    before('Preconditions',()=>{
-        cy.fixture('SD-01-Login/Login-StaticData').then(fixture=>{
-            data= fixture
-        })
-        cy.visit('/')
-        cy.url().should('contain', 'saucedemo')
-    })
-    it('SD-03 | Validate the user can close the error message',()=>{
+    it('SD-03 | Validate the user can close the error message to attempt another login',()=>{
         login.loginInvalidData(data.user3, data.invalidpass)
         login.closeErrorMessage()
+        login.get.loginButton().should('be.enabled')
         })
-    
 })

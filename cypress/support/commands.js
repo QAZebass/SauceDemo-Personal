@@ -1,3 +1,4 @@
+import { login } from "./SD-01-Login/SD-01-Login";
 // ***********************************************
 // This example commands.js shows you how to
 // create various custom commands and overwrite
@@ -11,7 +12,14 @@
 //
 // -- This is a parent command --
 // Cypress.Commands.add('login', (email, password) => { ... })
-//
+Cypress.Commands.add('Login', (username, password)=>{
+    //cy.session([username, password],()=>{
+        cy.visit('/')
+        username && login.writeUserName(username)
+        password && login.writePassword(password)
+        login.clickOnLoginButton()
+    //})
+})
 //
 // -- This is a child command --
 // Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
