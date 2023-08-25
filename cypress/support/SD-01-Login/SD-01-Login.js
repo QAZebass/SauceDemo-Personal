@@ -1,10 +1,12 @@
+
 class Login {
     get={
         loginContainer:()=> cy.get('[id="login_button_container"]'),
         loginForm:()=> cy.get('[data-test="username"]'),
         passForm:()=> cy.get('[data-test="password"]'),
-        errorMessageContainer:()=> cy.get('[class="error-message-container"]'),
-        loginButton:()=> cy.get('[data-test="login-button"]')
+        errorMessageContainer:()=> cy.get('h3'),
+        loginButton:()=> cy.get('[data-test="login-button"]'),
+        closeErrorButton:()=> cy.get('button')
     }
 
     writeUserName(username){
@@ -21,9 +23,26 @@ class Login {
         
     }
     clickOnLoginButton(){
-        this.get.loginContainer().within(()=>{
+            return this.get.loginContainer().within(()=>{
             this.get.loginButton().should('have.value', 'Login')
             this.get.loginButton().click()
+            })
+    }
+    getErrorMessage(){
+        return this.get.errorMessageContainer().then(message=>{
+            return Cypress.env('message', message.text())
+        })
+    }
+    loginInvalidData( user, invalidpass){
+        this.get.loginContainer().within(()=>{
+        this.get.loginForm().type(user)
+        this.get.passForm().type(invalidpass)
+        this.get.loginButton().click()
+        })
+    }
+    closeErrorMessage(){
+        this.get.loginContainer().within(()=>{
+            this.get.closeErrorButton().click()
         })
     }
 }
