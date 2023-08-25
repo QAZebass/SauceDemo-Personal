@@ -1,4 +1,3 @@
-
 class Login {
     get={
         loginContainer:()=> cy.get('[id="login_button_container"]'),

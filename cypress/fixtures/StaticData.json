@@ -5,5 +5,8 @@
     "user4": "performance_glitch_user",
     "password": "secret_sauce",
     "invalidpass":"invalid",
-    "errorMessage": "Epic sadface: Username and password do not match any user in this service"
+    "errorMessage": "Epic sadface: Username and password do not match any user in this service",
+    "AddbuttonText": "Add to cart",
+    "RemovebuttonText": "Remove",
+    "PLPtitle": "Products"
 }
