@@ -1,7 +1,7 @@
-import { plp } from "../support/SD-02-PLP/SD-02-PLP"
-import { cart } from "../support/SD-02-PLP/SD-02-PDP"
+import { plp } from "../support/SD-02-[PLP]-Select-add-buy-products-on-Saucedemo/SD-02-PLP"
+import { cart } from "../support/SD-02-[PLP]-Select-add-buy-products-on-Saucedemo/SD-02-Cart"
 import data from '../fixtures/StaticData.json'
-import { itemInformation } from "../support/SD-02-PLP/SD-02-PLP"
+import { itemInformation } from "../support/SD-02-[PLP]-Select-add-buy-products-on-Saucedemo/SD-02-PLP"
 const standardUser = data.user1
 const password = data.password
 

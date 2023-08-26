@@ -1,4 +1,4 @@
-import { login } from "./SD-01-Login/SD-01-Login";
+import { login } from "./SD-01-[LOGIN]/SD-01-Login";
 // ***********************************************
 // This example commands.js shows you how to
 // create various custom commands and overwrite
