@@ -18,6 +18,5 @@ describe('SD-02 | Select, add and buy a product on Saucedemo',()=>{
         cy.wrap(itemInformation).then(()=>{
             cart.myCart(itemInformation.itemName, itemInformation.itemDescription, itemInformation.itemPrice)
         })
-        //cart.myCart(itemInformation.itemName, itemInformation.itemDescription, itemInformation.itemPrice )
     })
 })
