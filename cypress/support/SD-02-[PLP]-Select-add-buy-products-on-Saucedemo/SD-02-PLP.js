@@ -1,4 +1,4 @@
-let itemInformation={}
+export let itemInformation={}
 class PLP {
     get={
         itemWrapper:()=> cy.get('[class="inventory_item"]'),
@@ -22,13 +22,16 @@ class PLP {
             .eq(randomNumber)
             .within(()=>{
                 this.get.itemName().then(name=> {
-                    itemInformation.itemName = name.text()
+                    Cypress.env('productName', name.text())
+                    itemInformation.itemName = Cypress.env('productName')
                 })
                 this.get.itemDescription().then(name =>{
-                    itemInformation.itemDescription = name.text()
+                    Cypress.env('productDesc', name.text())
+                    itemInformation.itemDescription = Cypress.env('productDesc')
                 })
                 this.get.itemPrice().then(price =>{
-                    itemInformation.itemPrice = price.text()
+                    Cypress.env('itemPrice', price.text())
+                    itemInformation.itemPrice = Cypress.env('itemPrice')
                 })
                 this.get.addtoCartButton().should('have.text', 'Add to cart').click()
                 this.get.addtoCartButton().should('have.text', 'Remove')

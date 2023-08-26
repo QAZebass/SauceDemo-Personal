@@ -8,5 +8,7 @@
     "errorMessage": "Epic sadface: Username and password do not match any user in this service",
     "AddbuttonText": "Add to cart",
     "RemovebuttonText": "Remove",
-    "PLPtitle": "Products"
+    "PLPtitle": "Products",
+    "cartLink": "https://www.saucedemo.com/cart.html",
+    "inventoryLink": "https://www.saucedemo.com/inventory.html"
 }

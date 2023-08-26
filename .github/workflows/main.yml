@@ -33,4 +33,4 @@ jobs:
               with:
                   browser: chrome
                   command: | #EDITAR AQUÍ EL ARCHIVO SUITE A EJECUTAR:
-                      yarn file cypress/e2e/SD-02-Select-add-buy-products-on-Saucedemo.cy.js
+                      yarn file cypress/e2e/SD-02-[PLP]-Select-add-buy-products-on-Saucedemo.cy.js
