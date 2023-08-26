@@ -1,4 +1,4 @@
-import { login } from "../../support/SD-01-Login/SD-01-Login"
+import { login } from "../../support/SD-01-[LOGIN]/SD-01-Login"
 let data;
 describe('SD-Login Feature',()=>{
     before('Load data',()=>{
