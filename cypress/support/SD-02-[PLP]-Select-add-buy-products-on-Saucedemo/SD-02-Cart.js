@@ -6,7 +6,8 @@ class Cart {
         labelDescription:()=> cy.get('[class="cart_desc_label"]'),
         productTitle: ()=> cy.get('[class="inventory_item_name"]'),
         productDescription:()=> cy.get('[class="inventory_item_desc"]'),
-        productPrice:()=> cy.get('[class="inventory_item_price"]')
+        productPrice:()=> cy.get('[class="inventory_item_price"]'),
+        checkoutButton:()=> cy.get('[data-test="checkout"]')
     }
     myCart(productTitle, productDescript, productPrice){
         this.get.cartWrapper().within(()=>{
@@ -26,6 +27,9 @@ class Cart {
                 expect(price.text()).to.equal(productPrice)
             })
         })
+    }
+    clickCheckoutButton(){
+        this.get.checkoutButton().should('have.text', 'Checkout').click()
     }
 }
 

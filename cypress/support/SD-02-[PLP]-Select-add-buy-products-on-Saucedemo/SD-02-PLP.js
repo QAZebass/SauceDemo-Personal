@@ -44,5 +44,9 @@ class PLP {
             this.get.shoppingCartButton().click()
         })
     }
+    addProduct(){
+        this.addRandomItem()
+        this.clickCartButton()
+    }
 }
 export const plp = new PLP()

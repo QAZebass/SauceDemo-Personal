@@ -10,5 +10,10 @@
     "RemovebuttonText": "Remove",
     "PLPtitle": "Products",
     "cartLink": "https://www.saucedemo.com/cart.html",
-    "inventoryLink": "https://www.saucedemo.com/inventory.html"
+    "inventoryLink": "https://www.saucedemo.com/inventory.html",
+    "checkoutLink": "https://www.saucedemo.com/checkout-step-one.html",
+    "checkoutName": "Sebastian",
+    "checkoutLastname": "Avila",
+    "checkoutZip": "J5411",
+    "checkoutLinkStep2": "https://www.saucedemo.com/checkout-step-two.html"
 }
