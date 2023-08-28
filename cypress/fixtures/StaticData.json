@@ -15,5 +15,7 @@
     "checkoutName": "Sebastian",
     "checkoutLastname": "Avila",
     "checkoutZip": "J5411",
-    "checkoutLinkStep2": "https://www.saucedemo.com/checkout-step-two.html"
+    "checkoutLinkStep2": "https://www.saucedemo.com/checkout-step-two.html",
+    "checkoutStep2Title": "Checkout: Overview",
+    "checkoutCompleteLink": "https://www.saucedemo.com/checkout-complete.html"
 }

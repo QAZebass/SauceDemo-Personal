@@ -11,7 +11,7 @@ chromeWebSecurity: false,
 	reporterOptions: {
 		configFile: 'jsconfig.json',
 	},
-	retries: process.env.CI ? 2 : 0,
+	retries: 1,
 	video: false,
 	// E2E Testing runner
 	e2e: {
