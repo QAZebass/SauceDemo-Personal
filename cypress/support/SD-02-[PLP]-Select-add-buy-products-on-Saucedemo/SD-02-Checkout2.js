@@ -1,4 +1,4 @@
-class Checkout2 {
+class CheckoutStepTwo {
     get={
         checkout2Title:()=> cy.get('[class="title"]'),
         productTitle: ()=> cy.get('[class="inventory_item_name"]'),
@@ -11,8 +11,13 @@ class Checkout2 {
         totalPriceLabel:()=> cy.get('[class="summary_info_label"]').contains('Price Total'),
         subTotal:()=> cy.get('[class="summary_subtotal_label"]'),
         taxLabel:()=> cy.get('[class="summary_tax_label"]'),
-        totalLabel:()=> cy.get('[class="summary_info_label summary_total_label"]')
+        totalLabel:()=> cy.get('[class="summary_info_label summary_total_label"]'),
+        finishButton:()=> cy.get('[data-test="finish"]')
+
     }
 
+    clickFinishButton(){
+        this.get.finishButton().should('have.text', 'Finish').click()
+    }
 }
-export const checkout2 = new Checkout2()
+export const checkoutsteptwo = new CheckoutStepTwo()
