@@ -2,6 +2,7 @@ import { plp } from "../support/SD-02-[PLP]-Select-add-buy-products-on-Saucedemo
 import { cart } from "../support/SD-02-[PLP]-Select-add-buy-products-on-Saucedemo/SD-02-Cart"
 import { checkout } from "../support/SD-02-[PLP]-Select-add-buy-products-on-Saucedemo/SD-02-Checkout"
 import { checkoutsteptwo } from "../support/SD-02-[PLP]-Select-add-buy-products-on-Saucedemo/SD-02-CheckoutStepTwo"
+import { checkoutlaststep } from "../support/SD-02-[PLP]-Select-add-buy-products-on-Saucedemo/SD-02-CheckoutLastStep"
 import data from '../fixtures/StaticData.json'
 import { itemInformation } from "../support/SD-02-[PLP]-Select-add-buy-products-on-Saucedemo/SD-02-PLP"
 const standardUser = data.user1
@@ -45,5 +46,12 @@ describe('SD-02 | Select, add and buy a product on Saucedemo',()=>{
         })
         checkoutsteptwo.clickFinishButton()
         cy.url().should('equal', data.checkoutCompleteLink)
+        checkoutlaststep.get.checkoutTitle().then(title=> expect(title.text()).equal(data.checkoutLastStepTitle))
+        checkoutlaststep.get.thanksSign().then(sign => expect(sign.text()).equal(data.checkoutLastStepThanks))
+        checkoutlaststep.get.orderDispatched().then(sign => expect(sign.text()).equal(data.checkoutLastStepDispatched))
+        checkoutlaststep.get.backHomeButton().should('have.text', data.backHomeButton)
+        checkoutlaststep.clickBackToHome()
+        //going back to home!
+        cy.url().should('equal', data.inventoryLink)
     })
 })
