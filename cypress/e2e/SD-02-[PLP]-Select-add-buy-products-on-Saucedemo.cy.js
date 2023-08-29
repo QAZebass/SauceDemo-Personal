@@ -51,6 +51,7 @@ describe('SD-02 | Select, add and buy a product on Saucedemo',()=>{
         checkoutlaststep.get.orderDispatched().then(sign => expect(sign.text()).equal(data.checkoutLastStepDispatched))
         checkoutlaststep.get.backHomeButton().should('have.text', data.backHomeButton)
         checkoutlaststep.clickBackToHome()
+        //going back to home!
         cy.url().should('equal', data.inventoryLink)
     })
 })
