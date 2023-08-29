@@ -12,12 +12,16 @@ class CheckoutStepTwo {
         subTotal:()=> cy.get('[class="summary_subtotal_label"]'),
         taxLabel:()=> cy.get('[class="summary_tax_label"]'),
         totalLabel:()=> cy.get('[class="summary_info_label summary_total_label"]'),
-        finishButton:()=> cy.get('[data-test="finish"]')
+        finishButton:()=> cy.get('[data-test="finish"]'),
+        cancelButton:()=> cy.get('[data-test="cancel"]')
 
     }
 
     clickFinishButton(){
         this.get.finishButton().should('have.text', 'Finish').click()
+    }
+    clickCancelButton(){
+        this.get.cancelButton().click()
     }
 }
 export const checkoutsteptwo = new CheckoutStepTwo()

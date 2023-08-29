@@ -22,6 +22,11 @@ class Checkout{
     clickContinueButton(){
         this.get.continueButton().should('have.value', 'Continue').click()
     }
-
+    fillPersonalInformation(name, surname, zipcode){
+        this.writeName(name)
+        this.writeSurname(surname)
+        this.writePostalCode(zipcode)
+        this.clickContinueButton()
+    }
 }
 export const checkout = new Checkout()

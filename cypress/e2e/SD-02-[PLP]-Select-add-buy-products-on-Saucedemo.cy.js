@@ -1,4 +1,5 @@
 import { plp } from "../support/SD-02-[PLP]-Select-add-buy-products-on-Saucedemo/SD-02-PLP"
+import { pdp } from "../support/SD-02-[PLP]-Select-add-buy-products-on-Saucedemo/SD-02-PDP"
 import { cart } from "../support/SD-02-[PLP]-Select-add-buy-products-on-Saucedemo/SD-02-Cart"
 import { checkout } from "../support/SD-02-[PLP]-Select-add-buy-products-on-Saucedemo/SD-02-Checkout"
 import { checkoutsteptwo } from "../support/SD-02-[PLP]-Select-add-buy-products-on-Saucedemo/SD-02-CheckoutStepTwo"
@@ -7,12 +8,15 @@ import data from '../fixtures/StaticData.json'
 import { itemInformation } from "../support/SD-02-[PLP]-Select-add-buy-products-on-Saucedemo/SD-02-PLP"
 const standardUser = data.user1
 const password = data.password
+const name = data.checkoutName
+const lastName = data.checkoutLastname
+const zipCode = data.checkoutZip
 
 describe('SD-02 | Select, add and buy a product on Saucedemo',()=>{
     beforeEach('Login',()=>{
         cy.Login(standardUser, password)
     })
-    it('SD-02-PLP | TC1: Validate that the user can add a random number of items to the shopping cart',()=>{
+    it('SD-02| TC1: Validate that the user can add a random number of items to the shopping cart',()=>{
         cy.url().should('equal', data.inventoryLink)
         plp.headerWrapper().then(()=> expect(Cypress.env('title')).equal(data.PLPtitle))
         plp.addRandomItem()
@@ -26,13 +30,27 @@ describe('SD-02 | Select, add and buy a product on Saucedemo',()=>{
             cart.get.productPrice().then(price=>{expect(price.text()).to.equal(`$${itemInformation.itemPrice}`)})
         })
     })
-    it( 'SD-02-PLP | TC2: Validate that the user can buy a random item on the website Saucedemo',()=>{
+    it.only('SD-02| TC2: Validate that the user can see the details of a product in the PDP by clicking on the product title',()=>{
+        plp.chooseRandomItem()
+        cy.wrap(itemInformation).then(()=>{
+            pdp.get.itemName().then(itemName =>{
+                expect(itemName.text()).equal(itemInformation.itemName)
+            })
+            pdp.get.itemDescription().then(desc =>{
+                expect(desc.text()).equal(itemInformation.itemDescription)
+            })
+            pdp.get.itemPrice().then(price =>{
+                expect(price.text()).equal(`$${itemInformation.itemPrice}`)
+            })
+        })
+    })
+    it( 'SD-02| TC3: Validate that the user can buy a random item on the website Saucedemo',()=>{
         plp.addProduct()
         cart.clickCheckoutButton()
         cy.url().should('equal', data.checkoutLink)
-        checkout.writeName(data.checkoutName)
-        checkout.writeSurname(data.checkoutLastname)
-        checkout.writePostalCode(data.checkoutZip)
+        checkout.writeName(name)
+        checkout.writeSurname(lastName)
+        checkout.writePostalCode(zipCode)
         checkout.clickContinueButton()
         cy.url().should('equal', data.checkoutLinkStep2)
         cy.wrap(itemInformation).then(()=>{
@@ -51,7 +69,16 @@ describe('SD-02 | Select, add and buy a product on Saucedemo',()=>{
         checkoutlaststep.get.orderDispatched().then(sign => expect(sign.text()).equal(data.checkoutLastStepDispatched))
         checkoutlaststep.get.backHomeButton().should('have.text', data.backHomeButton)
         checkoutlaststep.clickBackToHome()
-        //going back to home!
         cy.url().should('equal', data.inventoryLink)
     })
+    it('SD-02| TC4 :Validate that the user can cancel the purchase of a product on the Checkout: Overview',()=>{
+        plp.addProduct()
+        cart.clickCheckoutButton()
+        checkout.fillPersonalInformation(name, lastName, zipCode)
+        checkoutsteptwo.get.cancelButton().should('have.text', data.checkoutStep2CancelButton)
+        checkoutsteptwo.clickCancelButton()
+        plp.get.headerTitle().should('have.text', data.PLPtitle )
+        cy.url().should('equal', data.inventoryLink)
+    })
+
 })
