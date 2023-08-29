@@ -30,7 +30,7 @@ describe('SD-02 | Select, add and buy a product on Saucedemo',()=>{
             cart.get.productPrice().then(price=>{expect(price.text()).to.equal(`$${itemInformation.itemPrice}`)})
         })
     })
-    it.only('SD-02| TC2: Validate that the user can see the details of a product in the PDP by clicking on the product title',()=>{
+    it('SD-02| TC2: Validate that the user can see the details of a product in the PDP by clicking on the product title',()=>{
         plp.chooseRandomItem()
         cy.wrap(itemInformation).then(()=>{
             pdp.get.itemName().then(itemName =>{
