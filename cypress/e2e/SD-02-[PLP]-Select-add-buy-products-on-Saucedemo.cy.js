@@ -1,7 +1,7 @@
 import { plp } from "../support/SD-02-[PLP]-Select-add-buy-products-on-Saucedemo/SD-02-PLP"
 import { cart } from "../support/SD-02-[PLP]-Select-add-buy-products-on-Saucedemo/SD-02-Cart"
 import { checkout } from "../support/SD-02-[PLP]-Select-add-buy-products-on-Saucedemo/SD-02-Checkout"
-import { checkoutsteptwo } from "../support/SD-02-[PLP]-Select-add-buy-products-on-Saucedemo/SD-02-Checkout2"
+import { checkoutsteptwo } from "../support/SD-02-[PLP]-Select-add-buy-products-on-Saucedemo/SD-02-CheckoutStepTwo"
 import data from '../fixtures/StaticData.json'
 import { itemInformation } from "../support/SD-02-[PLP]-Select-add-buy-products-on-Saucedemo/SD-02-PLP"
 const standardUser = data.user1
