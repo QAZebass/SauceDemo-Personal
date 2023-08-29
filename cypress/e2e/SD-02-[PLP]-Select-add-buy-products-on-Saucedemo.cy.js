@@ -1,7 +1,7 @@
 import { plp } from "../support/SD-02-[PLP]-Select-add-buy-products-on-Saucedemo/SD-02-PLP"
 import { cart } from "../support/SD-02-[PLP]-Select-add-buy-products-on-Saucedemo/SD-02-Cart"
 import { checkout } from "../support/SD-02-[PLP]-Select-add-buy-products-on-Saucedemo/SD-02-Checkout"
-import { checkoutsteptwo } from "../support/SD-02-[PLP]-Select-add-buy-products-on-Saucedemo/SD-02-Checkout2"
+import { checkoutsteptwo } from "../support/SD-02-[PLP]-Select-add-buy-products-on-Saucedemo/SD-02-CheckoutStepTwo"
 import data from '../fixtures/StaticData.json'
 import { itemInformation } from "../support/SD-02-[PLP]-Select-add-buy-products-on-Saucedemo/SD-02-PLP"
 const standardUser = data.user1
@@ -18,10 +18,14 @@ describe('SD-02 | Select, add and buy a product on Saucedemo',()=>{
         plp.clickCartButton()
         cy.url().should('equal', data.cartLink )
         cy.wrap(itemInformation).then(()=>{
-            cart.myCart(itemInformation.itemName, itemInformation.itemDescription, itemInformation.itemPrice)
+            cart.get.cartTitle().then(title =>{expect(title.text()).to.equal(data.cartTitle)})
+            cart.get.labelDescription().then(desc=>{expect(desc.text()).to.equal(data.cartDescription)})
+            cart.get.productTitle().then(title=>{expect(title.text()).to.equal(itemInformation.itemName)})
+            cart.get.productDescription().then(productDesc=>{expect(productDesc.text()).to.equal(itemInformation.itemDescription)})
+            cart.get.productPrice().then(price=>{expect(price.text()).to.equal(`$${itemInformation.itemPrice}`)})
         })
     })
-    it.only( 'SD-02-PLP | TC2: Validate that the user can buy a random item on the website Saucedemo',()=>{
+    it( 'SD-02-PLP | TC2: Validate that the user can buy a random item on the website Saucedemo',()=>{
         plp.addProduct()
         cart.clickCheckoutButton()
         cy.url().should('equal', data.checkoutLink)

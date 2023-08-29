@@ -9,25 +9,6 @@ class Cart {
         productPrice:()=> cy.get('[class="inventory_item_price"]'),
         checkoutButton:()=> cy.get('[data-test="checkout"]')
     }
-    myCart(productTitle, productDescript, productPrice){
-        this.get.cartWrapper().within(()=>{
-            this.get.cartTitle().then(title =>{
-                expect(title.text()).to.equal('Your Cart')
-            })
-            this.get.labelDescription().then(desc=>{
-                expect(desc.text()).to.equal('Description')
-            })
-            this.get.productTitle().then(title=>{
-                expect(title.text()).to.equal(productTitle)
-            })
-            this.get.productDescription().then(productDesc=>{
-                expect(productDesc.text()).to.equal(productDescript)
-            })
-            this.get.productPrice().then(price=>{
-                expect(price.text()).to.equal(productPrice)
-            })
-        })
-    }
     clickCheckoutButton(){
         this.get.checkoutButton().should('have.text', 'Checkout').click()
     }
