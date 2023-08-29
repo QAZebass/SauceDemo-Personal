@@ -19,5 +19,10 @@
     "checkoutZip": "J5411",
     "checkoutLinkStep2": "https://www.saucedemo.com/checkout-step-two.html",
     "checkoutStep2Title": "Checkout: Overview",
-    "checkoutCompleteLink": "https://www.saucedemo.com/checkout-complete.html"
+    "checkoutCompleteLink": "https://www.saucedemo.com/checkout-complete.html",
+    "checkoutLastStepTitle":"Checkout: Complete!",
+    "checkoutLastStepThanks": "Thank you for your order!",
+    "checkoutLastStepDispatched":"Your order has been dispatched, and will arrive just as fast as the pony can get there!",
+    "backHomeButton": "Back Home"
+    
 }
