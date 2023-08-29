@@ -25,7 +25,7 @@ describe('SD-02 | Select, add and buy a product on Saucedemo',()=>{
             cart.get.productPrice().then(price=>{expect(price.text()).to.equal(`$${itemInformation.itemPrice}`)})
         })
     })
-    it.only( 'SD-02-PLP | TC2: Validate that the user can buy a random item on the website Saucedemo',()=>{
+    it( 'SD-02-PLP | TC2: Validate that the user can buy a random item on the website Saucedemo',()=>{
         plp.addProduct()
         cart.clickCheckoutButton()
         cy.url().should('equal', data.checkoutLink)
