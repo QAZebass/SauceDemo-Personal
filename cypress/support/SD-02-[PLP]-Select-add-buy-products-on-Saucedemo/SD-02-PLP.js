@@ -46,7 +46,30 @@ class PLP {
             this.taxCalculator(Cypress.env('itemPrice'))
             const tax= Number(Cypress.env('priceTax'))
             const itemPrice = Number(Cypress.env('itemPrice'))
-            itemInformation.total = tax + itemPrice
+            itemInformation.total = (tax + itemPrice).toFixed(2)
+        })
+    }
+    chooseRandomItem(){
+        this.get.itemWrapper().then(items=>{
+            const randomNumber = Cypress._.random(0, items.length -1)
+            this.get.itemWrapper()
+            .eq(randomNumber)
+            .within(()=>{
+                this.get.itemName().then(name=> {
+                    Cypress.env('productName', name.text())
+                    itemInformation.itemName = Cypress.env('productName')
+                })
+                this.get.itemDescription().then(name =>{
+                    Cypress.env('productDesc', name.text())
+                    itemInformation.itemDescription = Cypress.env('productDesc')
+                })
+                this.get.itemPrice().then(price =>{
+                    let itemPrice;
+                    itemPrice= price.text().replace(/\$/g, '')
+                    itemInformation.itemPrice = Cypress.env('itemPrice', itemPrice )
+                })
+                this.get.itemName().click()
+            })
         })
     }
     clickCartButton(){

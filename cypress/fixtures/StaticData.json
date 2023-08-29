@@ -19,6 +19,7 @@
     "checkoutZip": "J5411",
     "checkoutLinkStep2": "https://www.saucedemo.com/checkout-step-two.html",
     "checkoutStep2Title": "Checkout: Overview",
+    "checkoutStep2CancelButton": "Cancel",
     "checkoutCompleteLink": "https://www.saucedemo.com/checkout-complete.html",
     "checkoutLastStepTitle":"Checkout: Complete!",
     "checkoutLastStepThanks": "Thank you for your order!",
