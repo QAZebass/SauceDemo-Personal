@@ -4,7 +4,7 @@ const username = data.user1;
 const password = data.password;
 const invalidPass = data.invalidpass
 const errorMessage = data.errorMessage;
-describe('SD-Login Feature',()=>{
+describe('SD-01 | Login Feature',()=>{
 
     beforeEach('Preconditions',()=>{
         cy.visit('/')
