@@ -1,4 +1,6 @@
-export let itemInformation={}
+let itemInformation={}
+let itemsSortedA_Z=[], itemsSortedZ_A=[];
+let pricesUnsorted=[], pricesSorted=[];
 class PLP {
     get={
         itemWrapper:()=> cy.get('[class="inventory_item"]'),
@@ -8,7 +10,8 @@ class PLP {
         addtoCartButton:()=> cy.get('[class$="btn_small btn_inventory"]'),
         headerWrapper:()=> cy.get('[id="header_container"]'),
         shoppingCartButton:()=> cy.get('[id="shopping_cart_container"]'),
-        headerTitle:()=> cy.get('[class="title"]')
+        headerTitle:()=> cy.get('[class="title"]'),
+        sortingDropdown:()=> cy.get('[data-test="product_sort_container"]')
     }
     headerWrapper(){
         return this.get.headerTitle().then(title=> {
@@ -80,6 +83,29 @@ class PLP {
     addProduct(){
         this.addRandomItem()
         this.clickCartButton()
+    }
+    sortFromZtoA(){
+        return this.get.itemName().each(items =>{
+            itemsSortedA_Z.push(items.text())    
+        }).then(()=>{
+            
+            this.get.sortingDropdown().select('za')
+            this.get.itemName().each(items =>{
+                itemsSortedZ_A.push(items.text())
+                return Cypress.env('itemsUnsorted', itemsSortedA_Z), Cypress.env('itemsSorted', itemsSortedZ_A)
+        })
+        })
+    }
+    sortFromLowtoHigh(){
+        return this.get.itemPrice().each(price=>{
+            pricesUnsorted.push(price.text())
+        }).then(()=>{
+            this.get.sortingDropdown().select('lohi')
+            this.get.itemPrice().each(price =>{
+                pricesSorted.push(price.text())
+                return Cypress.env('pricesUnsorted', pricesUnsorted), Cypress.env('pricesSorted', pricesSorted)
+            })
+        })
     }
 }
 export const plp = new PLP()
