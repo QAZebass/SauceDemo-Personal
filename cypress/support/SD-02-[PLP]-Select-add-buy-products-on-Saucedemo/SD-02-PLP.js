@@ -103,7 +103,21 @@ class PLP {
             this.get.sortingDropdown().select('lohi')
             this.get.itemPrice().each(price =>{
                 pricesSorted.push(price.text())
-                return Cypress.env('pricesUnsorted', pricesUnsorted), Cypress.env('pricesSorted', pricesSorted)
+                //function to compare from low to high
+            function comparePrices(priceA, priceB) {
+                const valueA = parseFloat(priceA.slice(1))
+                const valueB = parseFloat(priceB.slice(1))
+              
+                if (valueA < valueB) {
+                  return -1
+                }
+                if (valueA > valueB) {
+                  return 1
+                }
+                return 0
+              }
+            const sortedPrices = pricesUnsorted.sort(comparePrices)
+                return Cypress.env('pricesSortedInTest', sortedPrices), Cypress.env('pricesSorted', pricesSorted)
             })
         })
     }

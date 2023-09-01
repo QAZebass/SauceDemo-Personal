@@ -3,7 +3,7 @@ import { plp } from '../support/SD-02-[PLP]-Select-add-buy-products-on-Saucedemo
 const user = data.user1;
 const password = data.password;
 
-describe('Sort items in PLP',()=>{
+describe('SD-03 | Sort items in PLP',()=>{
     beforeEach('Login',()=>{
         cy.Login(user, password)
     })
@@ -16,22 +16,9 @@ describe('Sort items in PLP',()=>{
             expect(Cypress.env('itemsSorted')).to.deep.equal(sortedInTest)
         })
     })
-    it.only('SD-03 | TC2: Validate that the user can sort the prices from low to high with the sort button', ()=>{
+    it('SD-03 | TC2: Validate that the user can sort the prices from low to high with the sort button', ()=>{
         plp.sortFromLowtoHigh().then(()=>{
-            function comparePrices(priceA, priceB) {
-                const valueA = parseFloat(priceA.slice(1))
-                const valueB = parseFloat(priceB.slice(1))
-              
-                if (valueA < valueB) {
-                  return -1
-                }
-                if (valueA > valueB) {
-                  return 1
-                }
-                return 0
-              }
-            const sortedPrices = Cypress.env('pricesUnsorted').sort(comparePrices)
-            expect(sortedPrices).to.deep.equal(Cypress.env('pricesSorted'))
+            expect(Cypress.env('pricesSortedInTest')).to.deep.equal(Cypress.env('pricesSorted'))
         })
     }) 
 })
