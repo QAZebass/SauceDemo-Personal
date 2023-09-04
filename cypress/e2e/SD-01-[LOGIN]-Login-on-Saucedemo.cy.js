@@ -8,7 +8,7 @@ describe('SD-01 | Login Feature',()=>{
 
     beforeEach('Preconditions',()=>{
         cy.visit('/')
-        cy.url().should('contain', 'sauceñdemo')
+        cy.url().should('contain', 'saucedemo')
     })
     it('SD-Login |TC1:  Validate the user can Log into the website successfully',()=>{
 

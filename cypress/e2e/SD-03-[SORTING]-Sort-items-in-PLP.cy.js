@@ -20,5 +20,10 @@ describe('SD-03 | Sort items in PLP',()=>{
         plp.sortFromLowtoHigh().then(()=>{
             expect(Cypress.env('pricesSortedInTest')).to.deep.equal(Cypress.env('pricesSorted'))
         })
+    })
+    it.only('SD-03 | TC3: Validate that the user can sort the prices from high to low with the sort button',()=>{
+        plp.sortFromHightoLow().then(()=>{
+            expect(Cypress.env('sortedInTest')).to.deep.equal(Cypress.env('pricesSorted'))
+        })
     }) 
 })
