@@ -121,5 +121,30 @@ class PLP {
             })
         })
     }
+    sortFromHightoLow(){
+        return this.get.itemPrice().each(price =>{
+            pricesUnsorted.push(price.text())
+        }).then(()=>{
+            this.get.sortingDropdown().select('hilo')
+            this.get.itemPrice().each(price =>{
+                pricesSorted.push(price.text())
+                function comparePricesHightoLow(priceA, priceB){
+                    const valueA = parseInt(priceA.slice(1))
+                    const valueB = parseInt(priceB.slice(1))
+
+                    if( valueA < valueB){
+                        return 1
+                    }
+                    if (valueA > valueB){
+                        return -1
+                    }
+                    return 0
+                }
+                pricesUnsorted.sort(comparePricesHightoLow)
+        }).then(()=>{
+            return Cypress.env('sortedInTest', pricesUnsorted), Cypress.env('pricesSorted', pricesSorted)
+        })
+    })
+    }
 }
 export const plp = new PLP()
