@@ -13,4 +13,6 @@ This is my personal repository in which I write my test on the website "Saucedem
 
 I basically tried to keep the code as simple as I could in order to make readable and clear for anyone who wants to read the code. The action steps were named accordingly and all the assertions (sorry, most of them) were done in the test.
 
+Something I couldn't do but I really want to, is mixing backend (api) with frontend by means of a cy.intercept(). I didn't do it because I don't think it adds some real value to the test, but for sure I'll do it in my next repository.
+
 
