@@ -1,4 +1,4 @@
-let itemInformation={}
+export let itemInformation={}
 let itemsSortedA_Z=[], itemsSortedZ_A=[];
 let pricesUnsorted=[], pricesSorted=[];
 class PLP {

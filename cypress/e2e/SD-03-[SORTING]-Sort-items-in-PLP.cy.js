@@ -6,8 +6,10 @@ const password = data.password;
 describe('SD-03 | Sort items in PLP',()=>{
     beforeEach('Login',()=>{
         cy.Login(user, password)
+        
     })
     it('SD-03 | TC1: Validate that the user can sort the item in alphabetically from Z to A with the sort button',()=>{
+        
         plp.sortFromZtoA().then(()=>{
             //Basically here I retrieved two arrays: One unsorted (from the web) and the other one
             //sorted on the website. Then I sorted the first array in my test (from z to a)
@@ -21,7 +23,7 @@ describe('SD-03 | Sort items in PLP',()=>{
             expect(Cypress.env('pricesSortedInTest')).to.deep.equal(Cypress.env('pricesSorted'))
         })
     })
-    it.only('SD-03 | TC3: Validate that the user can sort the prices from high to low with the sort button',()=>{
+    it('SD-03 | TC3: Validate that the user can sort the prices from high to low with the sort button',()=>{
         plp.sortFromHightoLow().then(()=>{
             expect(Cypress.env('sortedInTest')).to.deep.equal(Cypress.env('pricesSorted'))
         })

@@ -15,6 +15,7 @@ const zipCode = data.checkoutZip
 describe('SD-02 | Select, add and buy a product on Saucedemo',()=>{
     beforeEach('Login',()=>{
         cy.Login(standardUser, password)
+
     })
     it('SD-02| TC1: Validate that the user can add a random number of items to the shopping cart',()=>{
         cy.url().should('equal', data.inventoryLink)
@@ -24,10 +25,10 @@ describe('SD-02 | Select, add and buy a product on Saucedemo',()=>{
         cy.url().should('equal', data.cartLink )
         cy.wrap(itemInformation).then(()=>{
             cart.get.cartTitle().then(title =>{expect(title.text()).to.equal(data.cartTitle)})
-            cart.get.labelDescription().then(desc=>{expect(desc.text()).to.equal(data.cartDescription)})
-            cart.get.productTitle().then(title=>{expect(title.text()).to.equal(itemInformation.itemName)})
-            cart.get.productDescription().then(productDesc=>{expect(productDesc.text()).to.equal(itemInformation.itemDescription)})
-            cart.get.productPrice().then(price=>{expect(price.text()).to.equal(`$${itemInformation.itemPrice}`)})
+        cart.get.labelDescription().then(desc=>{expect(desc.text()).to.equal(data.cartDescription)})
+        cart.get.productTitle().then(title=>{expect(title.text()).to.equal(itemInformation.itemName)})
+        cart.get.productDescription().then(productDesc=>{expect(productDesc.text()).to.equal(itemInformation.itemDescription)})
+        cart.get.productPrice().then(price=>{expect(price.text()).to.equal(`$${itemInformation.itemPrice}`)})
         })
     })
     it('SD-02| TC2: Validate that the user can see the details of a product in the PDP by clicking on the product title',()=>{
@@ -45,6 +46,7 @@ describe('SD-02 | Select, add and buy a product on Saucedemo',()=>{
         })
     })
     it( 'SD-02| TC3: Validate that the user can buy a random item on the website Saucedemo',()=>{
+        
         plp.addProduct()
         cart.clickCheckoutButton()
         cy.url().should('equal', data.checkoutLink)
@@ -69,7 +71,7 @@ describe('SD-02 | Select, add and buy a product on Saucedemo',()=>{
         checkoutlaststep.get.orderDispatched().then(sign => expect(sign.text()).equal(data.checkoutLastStepDispatched))
         checkoutlaststep.get.backHomeButton().should('have.text', data.backHomeButton)
         checkoutlaststep.clickBackToHome()
-        cy.url().should('equal', data.inventoryLink)
+        cy.url().should('equal', 'https://www.saucedemo.com/inventory.html')
     })
     it('SD-02| TC4 :Validate that the user can cancel the purchase of a product on the Checkout: Overview',()=>{
         plp.addProduct()
